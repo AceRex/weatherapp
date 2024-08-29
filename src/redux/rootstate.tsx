@@ -21,5 +21,6 @@ export type Rootstate = {
     location: string;
     result: result;
     error: string;
+    status: string;
   };
 };

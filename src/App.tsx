@@ -17,6 +17,7 @@ export default function App() {
   const location = useSelector((state: Rootstate) => state.slice.location);
   const result = useSelector((state: Rootstate) => state.slice.result);
   const error = useSelector((state: Rootstate) => state.slice.error);
+  const status = useSelector((state: Rootstate) => state.slice.status);
 
   const handleSubmit = () => {
     dispatch(fetchLocation(location));
@@ -64,7 +65,7 @@ export default function App() {
           className="w-full h-screen"
         />
       </div>
-      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/35 p-12 lg:p-24">
+      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/35 p-8 lg:p-24">
         <div className="w-full lg:w-[60%] m-auto flex items-center gap-2 rounded-lg bg-slate-950/50 backdrop-blur-md border border-white/60">
           <div className="w-[80%] lg:w-[75%]">
             <input
@@ -116,7 +117,15 @@ export default function App() {
         ) : !result && error ? (
           <div className="bg-slate-950/50 text-white backdrop-blur-sm text-center flex flex-col gap-4 items-center place-content-center w-full lg:w-[60%] m-auto mt-12 p-24 rounded-lg">
             <BiSolidError size={100} />
-            <p className="text-2xl lg:text-4xl font-bold tracking-tighter">{error}</p>
+            <p className="text-2xl lg:text-4xl font-bold tracking-tighter">
+              {error}
+            </p>
+          </div>
+        ) : status === "loading" ? (
+          <div className="bg-slate-950/50 text-white backdrop-blur-sm text-center flex flex-col gap-4 items-center place-content-center w-full lg:w-[60%] m-auto mt-12 p-24 rounded-lg">
+            <p className="text-2xl lg:text-4xl font-bold tracking-tighter">
+              Loading, please wait...
+            </p>
           </div>
         ) : null}
       </div>

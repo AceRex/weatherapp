@@ -64,9 +64,9 @@ export default function App() {
           className="w-full h-screen"
         />
       </div>
-      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/35 p-24">
-        <div className="w-[60%] m-auto flex items-center gap-2 rounded-lg bg-slate-950/50 backdrop-blur-md border border-white/60">
-          <div className="w-[75%]">
+      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/35 p-12 lg:p-24">
+        <div className="w-full lg:w-[60%] m-auto flex items-center gap-2 rounded-lg bg-slate-950/50 backdrop-blur-md border border-white/60">
+          <div className="w-[80%] lg:w-[75%]">
             <input
               className="p-3 pl-4 w-full bg-transparent outline-none text-white"
               value={location}
@@ -74,7 +74,7 @@ export default function App() {
               onChange={(e) => dispatch(Action.setLocation(e.target.value))}
             />
           </div>
-          <div className="p-2 w-[25%]">
+          <div className="p-2 lg:w-[25%]">
             <button
               onClick={handleSubmit}
               className="bg-emerald-400 w-full p-2 text-center rounded-xl text-sm tracking-tighter"
@@ -84,10 +84,10 @@ export default function App() {
           </div>
         </div>
         {result ? (
-          <div className="bg-slate-950/50 text-white backdrop-blur-sm w-[60%] m-auto mt-12 rounded-lg">
-            <div className="flex items-center p-12">
-              <div className="w-1/2 px-12">
-                <p className="text-6xl font-light uppercase tracking-tighter mb-2">
+          <div className="bg-slate-950/50 text-white backdrop-blur-sm w-full lg:w-[60%] m-auto mt-12 rounded-lg">
+            <div className="flex flex-col-reverse lg:flex-row items-center p-4 lg:p-12">
+              <div className="lg:w-1/2 w-full px-8 lg:px-12">
+                <p className="lg:text-6xl text-xl font-light uppercase tracking-tighter mb-2">
                   {result?.name}
                 </p>
                 <p className="text-6xl font-extrabold tracking-tighter mb-2">
@@ -102,7 +102,7 @@ export default function App() {
                   {result?.name} - {result?.sys?.country}
                 </p>
               </div>
-              <div className="w-1/2 flex justify-end p-4">
+              <div className="lg:w-1/2 w-full flex justify-center lg:justify-end p-4">
                 <img
                   // @ts-ignore
                   src={weatherIcon}
@@ -114,9 +114,9 @@ export default function App() {
             </div>
           </div>
         ) : !result && error ? (
-          <div className="bg-slate-950/50 text-white backdrop-blur-sm text-center flex flex-col gap-4 items-center place-content-center w-[60%] m-auto mt-12 p-24 rounded-lg">
+          <div className="bg-slate-950/50 text-white backdrop-blur-sm text-center flex flex-col gap-4 items-center place-content-center w-full lg:w-[60%] m-auto mt-12 p-24 rounded-lg">
             <BiSolidError size={100} />
-            <p className="text-4xl font-bold tracking-tighter">{error}</p>
+            <p className="text-2xl lg:text-4xl font-bold tracking-tighter">{error}</p>
           </div>
         ) : null}
       </div>
